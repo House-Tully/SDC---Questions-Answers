@@ -1,0 +1,22 @@
+{
+  "name": "sdc---questions-answers",
+  "version": "1.0.0",
+  "description": "Questions and Answers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/House-Tully/SDC---Questions-Answers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/House-Tully/SDC---Questions-Answers/issues"
+  },
+  "homepage": "https://github.com/House-Tully/SDC---Questions-Answers#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
