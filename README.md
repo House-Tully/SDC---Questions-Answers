@@ -1,2 +1,2 @@
-# SDC---Questions-Answers
+# SDC-Questions-Answers
 Questions and Answers
