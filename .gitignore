@@ -118,3 +118,6 @@ client/dist/dummyReviews.js
 
 # img_bb
 client/dist/imgbb.js
+
+#data
+data/
