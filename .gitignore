@@ -121,3 +121,6 @@ client/dist/imgbb.js
 
 #data
 data/
+
+
+.DS_store
