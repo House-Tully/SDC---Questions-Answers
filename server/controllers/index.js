@@ -99,7 +99,20 @@ module.exports = {
   },
 
   updateQHelpfulness: function(req, res) {
-    console.log('hi')
+    console.log('question_id', req.params.question_id)
+
+    let queryStr = `
+    update questions
+    set question_helpfulness = question_helpfulness + 1
+    where question_id = $1 `
+
+    pool.query(queryStr, [req.params.question_id])
+    .then((result) => {
+      res.status(204).send('updated helpfulness');
+    })
+    .catch((err) => {
+      res.status(500).send('could not update helpfulness')
+    })
   },
 
   updateQReport: function(req, res) {
