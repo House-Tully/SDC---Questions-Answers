@@ -63,7 +63,6 @@ module.exports = {
   },
 
   postQuestion: function(req,res) {
-    // console.log(req.body);
     let date = JSON.stringify(new Date());
     console.log('typeof', date)
     let queryStr = `insert into questions (product_id, question_body, question_date, asker_name, email, reported, question_helpfulness) values ($1, $2, $3, $4, $5, 0, 0)`
@@ -97,7 +96,23 @@ module.exports = {
     .catch((err) => {
       res.status(500).send('could not post question')
     })
+  },
 
+  updateQHelpfulness: function(req, res) {
+    console.log('hi')
+  },
 
+  updateQReport: function(req, res) {
+    console.log('hi')
+  },
+
+  updateAHelpfulness: function(req, res) {
+    console.log('hi')
+  },
+
+  updateAReport: function(req, res) {
+    console.log('hi')
   }
+
+
 }

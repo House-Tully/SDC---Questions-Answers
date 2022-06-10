@@ -11,12 +11,12 @@ router.post('/questions', controller.postQuestion);
 
 router.post('/questions/:question_id/answers', controller.postAnswer)
 
-router.put('/questions/:question_id/helpful');
+router.put('/questions/:question_id/helpful', controller.updateQHelpfulness);
 
-router.put('/questions/:question_id/report');
+router.put('/questions/:question_id/report', controller.updateQReport);
 
-router.put('/answers/:answer_id/helpful')
+router.put('/answers/:answer_id/helpful', controller.updateAHelpfulness)
 
-router.put('/answers/:answers_id/report');
+router.put('/answers/:answers_id/report', controller.updateAReport);
 
 module.exports = router;
