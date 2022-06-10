@@ -11,7 +11,7 @@ CREATE DATABASE qa;
 -- id,product_id,body,date_written,asker_name,asker_email,reported,helpful
 
 CREATE TABLE QUESTIONS(
-   ID INT PRIMARY KEY NOT NULL,
+   QUESTION_ID SERIAL PRIMARY KEY NOT NULL,
    PRODUCT_ID INT NOT NULL,
    QUESTION_BODY TEXT NOT NULL,
    QUESTION_DATE CHAR(50),
@@ -24,8 +24,8 @@ CREATE TABLE QUESTIONS(
 -- id,question_id,body,date_written,answerer_name,answerer_email,reported,helpful
 
 CREATE TABLE ANSWERS(
-   ID INT PRIMARY KEY NOT NULL,
-   QUESTION_ID INTEGER REFERENCES QUESTIONS (ID),
+   ID SERIAL PRIMARY KEY NOT NULL,
+   QUESTION_ID INTEGER REFERENCES QUESTIONS (QUESTION_ID),
    ANSWER_BODY TEXT NOT NULL,
    ANSWER_DATE CHAR(50),
    ANSWERER_NAME TEXT,
@@ -37,9 +37,9 @@ CREATE TABLE ANSWERS(
 -- id,answer_id,url
 
 CREATE TABLE PHOTOS(
-   ID INT PRIMARY KEY NOT NULL,
+   ID SERIAL PRIMARY KEY NOT NULL,
    ANSWER_ID INTEGER REFERENCES ANSWERS (ID),
-   PIC_URL TEXT
+   PIC_URL TEXT NOT NULL
 );
 
 -- show tables: \d
@@ -56,3 +56,9 @@ DELIMITER ',' CSV HEADER;
 COPY PHOTOS
 FROM '/Users/szetodonna/HackReactor/SDC---Questions-Answers/data/answers_photos.csv'
 DELIMITER ',' CSV HEADER;
+
+SELECT setval(pg_get_serial_sequence('questions', 'question_id'), max(question_id)) FROM questions;
+
+SELECT setval(pg_get_serial_sequence('answers', 'id'), max(id)) FROM answers;
+
+SELECT setval(pg_get_serial_sequence('photos', 'id'), max(id)) FROM photos;

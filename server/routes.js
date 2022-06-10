@@ -5,11 +5,11 @@ var router = require('express').Router();
 // app.METHOD(PATH, HANDLER)
 router.get('/questions', controller.getQuestions);
 
-router.get('/questions/:question_id/answers');
+router.get('/questions/:question_id/answers', controller.getAnswerList);
 
-router.post('/questions');
+router.post('/questions', controller.postQuestion);
 
-router.post('/questions/:question_id/answers')
+router.post('/questions/:question_id/answers', controller.postAnswer)
 
 router.put('/questions/:question_id/helpful');
 
