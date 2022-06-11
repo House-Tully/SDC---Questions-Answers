@@ -1,7 +1,7 @@
 -- to start psql: psql -U postgres
 -- to run file in psql: \i server/schema.sql
 
--- DROP DATABASE qa;
+DROP DATABASE qa;
 
 CREATE DATABASE qa;
 
@@ -17,7 +17,7 @@ CREATE TABLE QUESTIONS(
    QUESTION_DATE CHAR(50),
    ASKER_NAME TEXT,
    EMAIL TEXT,
-   REPORTED INT,
+   REPORTED BOOLEAN,
    QUESTION_HELPFULNESS INT
 );
 

@@ -17,6 +17,6 @@ router.put('/questions/:question_id/report', controller.updateQReport);
 
 router.put('/answers/:answer_id/helpful', controller.updateAHelpfulness)
 
-router.put('/answers/:answers_id/report', controller.updateAReport);
+router.put('/answers/:answer_id/report', controller.updateAReport);
 
 module.exports = router;
