@@ -14,7 +14,7 @@ CREATE TABLE QUESTIONS(
    QUESTION_ID SERIAL PRIMARY KEY NOT NULL,
    PRODUCT_ID INT NOT NULL,
    QUESTION_BODY TEXT NOT NULL,
-   QUESTION_DATE CHAR(50),
+   QUESTION_DATE BIGINT,
    ASKER_NAME TEXT,
    EMAIL TEXT,
    REPORTED BOOLEAN,
@@ -27,7 +27,7 @@ CREATE TABLE ANSWERS(
    ID SERIAL PRIMARY KEY NOT NULL,
    QUESTION_ID INTEGER REFERENCES QUESTIONS (QUESTION_ID),
    ANSWER_BODY TEXT NOT NULL,
-   ANSWER_DATE CHAR(50),
+   ANSWER_DATE BIGINT,
    ANSWERER_NAME TEXT,
    ANSWERER_EMAIL TEXT,
    REPORTED BOOLEAN,
@@ -62,3 +62,5 @@ SELECT setval(pg_get_serial_sequence('questions', 'question_id'), max(question_i
 SELECT setval(pg_get_serial_sequence('answers', 'id'), max(id)) FROM answers;
 
 SELECT setval(pg_get_serial_sequence('photos', 'id'), max(id)) FROM photos;
+
+SELECT
