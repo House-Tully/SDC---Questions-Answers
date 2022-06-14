@@ -1,4 +1,5 @@
 var express = require('express');
+require('dotenv').config()
 
 // Router
 var router = require('./routes.js');
