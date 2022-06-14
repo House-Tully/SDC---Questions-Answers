@@ -20,8 +20,5 @@ router.put('/answers/:answer_id/helpful', controller.updateAHelpfulness)
 
 router.put('/answers/:answer_id/report', controller.updateAReport);
 
-router.get(`/${process.env.LOADER}`, (req, res) => {
-  res.send(`${process.env.LOADER}`)
-})
 
 module.exports = router;
