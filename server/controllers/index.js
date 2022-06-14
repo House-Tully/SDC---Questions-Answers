@@ -3,11 +3,9 @@ var pool = require('../db');
 module.exports = {
 
   getQuestions: function(req, res) {
-    console.log('req.param.product_id',req.query.
-    product_id )
     let count = req.query.count || 5;
     let page = req.query.page || 1;
-    let offset = page - 1 * count;
+    let offset = (page - 1) * count;
     let queryStr = `select question_id, question_body, to_timestamp(question_date/1000) as question_date, asker_name, question_helpfulness, reported,
     (select json_object_agg(
       answers.id, json_build_object(
@@ -25,7 +23,7 @@ module.exports = {
             where answer_id=answers.id)))
             as answers from answers
             where question_id=questions.question_id)
-            from questions where product_id = $1 and reported=false and limit$2  offset$3;`
+            from questions where product_id = $1 and reported=false limit $2 offset $3;`
     pool.query(queryStr,[req.query.product_id, count, offset])
     .then((data) => {
       let result = {
@@ -45,7 +43,7 @@ module.exports = {
     console.log(req.query.page, req.query.count)
     let count = req.query.count || 5;
     let page = req.query.page || 1;
-    let offset = page - 1 * count;
+    let offset = (page - 1) * count;
 
     let queryStr = `(select id as answer_id, answer_body as body, to_timestamp(answer_date/1000) as date, answerer_name, question_helpfulness as helpfulness,(select coalesce(json_agg(
           json_build_object(
@@ -53,7 +51,7 @@ module.exports = {
             'url', pic_url)), '[]')
             as photos from photos
             where answer_id=answers.id ) from answers
-            where question_id=$1 and reported=false and limit$2  offset$3)`;
+            where question_id=$1 and reported=false limit $2  offset $3)`;
     pool.query(queryStr, [req.params.question_id, count, offset])
     .then( (data) => {
       let result = {

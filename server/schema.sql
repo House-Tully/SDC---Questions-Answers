@@ -63,4 +63,3 @@ SELECT setval(pg_get_serial_sequence('answers', 'id'), max(id)) FROM answers;
 
 SELECT setval(pg_get_serial_sequence('photos', 'id'), max(id)) FROM photos;
 
-SELECT
