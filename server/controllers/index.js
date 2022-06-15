@@ -39,8 +39,6 @@ module.exports = {
   },
 
   getAnswerList: function(req, res) {
-    console.log(req.params.question_id);
-    console.log(req.query.page, req.query.count)
     let count = req.query.count || 5;
     let page = req.query.page || 1;
     let offset = (page - 1) * count;
@@ -93,7 +91,6 @@ module.exports = {
     pool.query(queryStr, [req.params.question_id, req.body.body, req.body.name, req.body.email])
     .then( async (result) => {
       let photos = req.body.photos;
-      console.log('photos', photos);
       await photos.forEach(photo => {
         let queryStr = `insert into photos(answer_id, pic_url)
           values($1, $2)`
